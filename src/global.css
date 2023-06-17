@@ -1,0 +1,125 @@
+.description-txt {
+  width: 180px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  text-overflow: clip;
+}
+
+.item-title {
+  font-size: 14px;
+  color: black;
+  font-weight: 500;
+  list-style: none;
+}
+
+.css-1c01pt:hover,
+.css-1c01pt[data-hover] {
+  background: #ffe4e1 !important;
+  color: #e32227 !important;
+}
+.cm-line-break {
+  display: block;
+}
+
+.table-container {
+  border-collapse: collapse;
+  width: 100%;
+}
+.table-head {
+  background-color: #e0e0e0;
+}
+.table-data {
+  text-align: center;
+  padding: 10px;
+}
+.tb-prod-name {
+  display: flex;
+  align-items: center;
+}
+.prod-subtitle {
+  font-size: 12px;
+  width: 90px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 1;
+  text-overflow: clip;
+}
+.prod-name {
+  /* font-size: 12px; */
+  width: 150px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 1;
+  text-overflow: clip;
+}
+.prod-title {
+  width: 110px;
+}
+
+.button-active {
+  border: 1px solid #e32227 !important;
+  background: #ffe4e1 !important;
+  color: #e32227 !important;
+}
+
+.active-link {
+  background-color: #ffe4e1 !important;
+  color: #e32227 !important;
+}
+
+.button-normal {
+  border: 1px solid gray !important;
+  background: white !important;
+  color: black !important;
+}
+.table-edit {
+  color: #e32227;
+  font-size: 16px;
+}
+.gradinant-button{
+  background: #12c2e9 !important;  
+  background: -webkit-linear-gradient(to right, #f64f59, #c471ed, #12c2e9) !important;  
+  background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9) !important;
+}
+.cm-text{
+  text-align: center;
+  align-items: center;
+  color: #e32227;
+  font-size: 14px;
+  font-weight: bold;
+}
+.cm-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cart-container {
+  height: 600px;
+  overflow: auto;
+}
+.simple-text {
+  color: #718096;
+  font-weight: 400;
+  font-size: 14px;
+}
+.final-amt{
+  color: #000;
+  font-weight: 500;
+  font-size: 15px;
+}
+.table-flex{
+  display: flex;
+  justify-content: space-between;
+}
+
+/* .mod-prod-subtitle {
+  font-size: 10px;
+}
+
+.mod-prod-title {
+  font-size: 14px;
+} */
