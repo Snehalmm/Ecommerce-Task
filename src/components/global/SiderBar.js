@@ -1,10 +1,8 @@
 import React, { useState } from 'react'
 import {
- Box, Icon, Text,
-  MenuItem,
-  MenuList,
-  Image,
-  NavItem,
+  Box, 
+  Icon, 
+  Text,
   Link,
   Flex,
 } from '@chakra-ui/react';
@@ -65,11 +63,10 @@ const SiderBarContent = ({history}) => {
 
     return (
       <Box>
-      <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
+        <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
           <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-          A.T.links
+            A.T.links
           </Text>
-          {/* <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} /> */}
         </Flex>
 
         {LinkItems.map((link, index) => (
@@ -77,8 +74,7 @@ const SiderBarContent = ({history}) => {
             {link.name}
           </NavItem>
         ))}
-      
-    </Box>
+      </Box>
     )
 }
 

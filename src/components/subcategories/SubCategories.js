@@ -25,6 +25,11 @@ const SubCategories = ({data, loading, setSubCategoryID}) => {
             ))}
             </Grid>
           )}
+          {data && data?.length===0 && (
+             <Heading as="h2" mb="8" fontSize="2xl">
+                No Data Found
+            </Heading>
+          )}
       </>
     )
 }

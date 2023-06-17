@@ -1,7 +1,6 @@
-import { Box, Grid, Heading, Flex, Image } from '@chakra-ui/react';
+import { Box, Heading, Flex, Image } from '@chakra-ui/react';
 import logo192 from '../../assets/images/epson.png';
 import homeIcon from '../../assets/images/home-icon.jpg';
-import products from "../../products";
 
 
 const Footer = ({data, setSubCategoryID}) => {

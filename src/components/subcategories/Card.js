@@ -1,20 +1,7 @@
-import { Box, Heading, Icon, Image, Stack, Text, useColorModeValue } from "@chakra-ui/react";
+import { Box, Heading, Image, useColorModeValue } from "@chakra-ui/react";
 import logo192 from '../../assets/images/epson.png'
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 const SubcategoryCard = ({item, setSubCategoryID}) => {
-  const navigate = useNavigate();
-    // const [isOpen, setIsOpen]= useState(false);
-    // const [subCatgoryID, setSubCategoryID] = useState(null);
-
-    // const onOpen =(id)=>{
-    //   setIsOpen(true);
-    //   setSubCategoryID(id)
-    // }
-    // const onClose =()=>{
-    //   setIsOpen(false);
-    // }
     return (
       <>
         <Box
@@ -43,7 +30,6 @@ const SubcategoryCard = ({item, setSubCategoryID}) => {
               {item.subCategoryName}
             </Heading>
         </Box>
-        {/* <Description onClose={onClose} isOpen={isOpen} subCatgoryID={subCatgoryID}/> */}
       </>
       
     )

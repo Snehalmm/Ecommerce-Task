@@ -10,8 +10,6 @@ const ProductCard = ({item, onOpen}) => {
           role={'group'}
           p={2}
           height={200}
-          // maxW={'240px'}
-          // w={'full'}
           cursor={"pointer"}
           bg={useColorModeValue('white', 'gray.800')}
           borderWidth={1}
@@ -23,7 +21,6 @@ const ProductCard = ({item, onOpen}) => {
         >
         <Flex justifyContent={"center"} alignItems={"center"}>
           <Image
-            // rounded={'lg'}
             height={100}
             width={100}
             objectFit={'contain'}
@@ -46,7 +43,7 @@ const ProductCard = ({item, onOpen}) => {
             size={"1xl"}
             zIndex={2}
             onClick={()=> toast.info("Coming Soon!")}
-            />
+        />
       </Box>
     )
 }

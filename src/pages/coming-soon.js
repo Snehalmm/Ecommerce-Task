@@ -1,5 +1,5 @@
-import { Box, Heading, Text, Button, Flex, Link, Image } from "@chakra-ui/react";
-import SiderBarContent from "../components/SiderBarContent";
+import { Box, Text, Button, Flex, Link, Image } from "@chakra-ui/react";
+import SiderBar from "../components/global/SiderBar";
 import ComingSoonImage from '../assets/images/coming-soon.jpg';
 
 export default function NotFound() {
@@ -9,7 +9,7 @@ export default function NotFound() {
         <Box width={"100%"}>
           <Flex>
             <Box rounded={"lg"} width={"26%"} bgColor={"#fff"}>
-              <SiderBarContent />
+              <SiderBar />
             </Box>
             <Box
               padding="20px"

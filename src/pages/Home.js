@@ -1,12 +1,12 @@
 import { Heading, Flex, Box } from "@chakra-ui/react";
 import { FetchData } from "../api/useApi";
 import { getAPiEndpoint } from "../api/apiEndpoints";
-import CartCard from "../components/CartCard";
+import CartCard from "../components/orders/CartCard";
 import { useEffect, useState } from "react";
 import Categories from '../components/categories/Categories';
 import Footer from "../components/categories/Footer";
 import Products from '../components/products/Products';
-import SiderBarContent from "../components/SiderBarContent";
+import SiderBar from "../components/global/SiderBar";
 import { ToastContainer } from 'react-toastify';
 import OrderModal from '../components/orders/Modal';
 
@@ -81,7 +81,7 @@ const HomeScreen = () => {
         <Box width={"74.5%"} >
         <Flex height={subCatgoryID===null ? '100%': ''}>
           <Box rounded={"lg"} width={"26%"} bgColor={"#fff"} >
-            <SiderBarContent/>
+            <SiderBar/>
           </Box>
           <Box padding="20px" width={"74%"} rounded={"lg"} bgColor={"#fff"} marginLeft={"10px"} 
             style={{height: subCatgoryID===null ? "": "500px", overflow: "auto"}}>
@@ -90,17 +90,13 @@ const HomeScreen = () => {
                   loading...
               </Heading>
             )}
-            {isLoadingProducts && (
-              <Heading as="h2" mb="8" fontSize="2xl">
-                  loading...
-              </Heading>
-            )}
+          
             {subCatgoryID===null ? (
               categoriesData && categoriesData?.length>0 && (
                 <Categories name={name} selectedCategory={selectedCategory} categoriesData={categoriesData} setName={setName} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} setSubCategoryID={setSubCategoryID} setSubCategory={setSubCategory}/>
               )
             ):(
-              productsData?.length>0 && <Products data={productsData}/>
+             <Products data={productsData} isLoadingProducts={isLoadingProducts}/>
             )}
           </Box>
         </Flex>

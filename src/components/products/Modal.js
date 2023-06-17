@@ -160,7 +160,6 @@ function Description({isOpen, onClose, product}) {
                         <th className="table-data">Quantity</th>
                         <th className="table-data">Amount</th>
                         <th className="table-data"></th>
-
                       </tr>
                       {orders?.length>0 && (orders?.map((item, index)=>{
                           return(
@@ -199,10 +198,10 @@ function Description({isOpen, onClose, product}) {
                     
                     )}
                   </Box>
-                  {orders?.length>0 &&
-                  <Flex alignItems={"center"}  justifyContent={"center"} mt={10}>
-                <Button bg={"red.500"} color={"#FFF"} padding={"10px 85px"} onClick={onClose}>Add to Cart</Button>
-                </Flex>}
+                    {orders?.length>0 &&
+                    <Flex alignItems={"center"}  justifyContent={"center"} mt={10}>
+                      <Button bg={"red.500"} color={"#FFF"} padding={"10px 85px"} onClick={onClose}>Add to Cart</Button>
+                    </Flex>}
                    </Box>
                  </Flex>
                 </ModalBody>

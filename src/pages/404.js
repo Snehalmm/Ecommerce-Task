@@ -1,5 +1,5 @@
 import { Box, Heading, Text, Button, Flex, Link } from "@chakra-ui/react";
-import SiderBarContent from "../components/SiderBarContent";
+import SiderBar from "../components/global/SiderBar";
 
 export default function NotFound() {
   return (
@@ -8,7 +8,7 @@ export default function NotFound() {
         <Box width={"100%"}>
           <Flex>
             <Box rounded={"lg"} width={"26%"} bgColor={"#fff"}>
-              <SiderBarContent />
+              <SiderBar />
             </Box>
             <Box
               padding="20px"

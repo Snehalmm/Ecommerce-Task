@@ -3,7 +3,7 @@ import { Heading, Grid, Box } from "@chakra-ui/react";
 import ProductCard from "./Card";
 import Description from './Modal';
 
-function Categories({data}) {
+function Categories({data, isLoadingProducts}) {
     const [isOpen, setIsOpen]= useState(false);
     const [product, setProduct] = useState(null);
 
@@ -20,6 +20,17 @@ function Categories({data}) {
             <Heading as="h2" mb="8" fontSize="2xl">
                 {"All Products"}
             </Heading>
+            {isLoadingProducts && (
+              <Heading as="h2" mb="8" fontSize="2xl">
+                  loading...
+              </Heading>
+            )}
+            {data && data?.length===0 && (
+             <Heading as="h2" mb="8" fontSize="2xl">
+                No Products Found
+            </Heading>
+          )}
+          {data?.length>0 && (
             <Box paddingY={"20px"} paddingX="10px">
             <Grid
                 templateColumns={{
@@ -35,6 +46,7 @@ function Categories({data}) {
                 ))}
             </Grid>
             </Box>
+          )}
         </Box>
         <Description onClose={onClose} isOpen={isOpen} product={product}/>
       </>

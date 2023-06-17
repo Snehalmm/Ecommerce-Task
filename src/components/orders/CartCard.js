@@ -1,12 +1,12 @@
 import React from "react";
-import { Box, Divider, Flex, Icon, Image, Button } from "@chakra-ui/react";
-import cartImg from "../assets/images/emptyCart.png";
-import { useOrdersStore } from "../store/orders";
-import logo192 from '../assets/images/epson.png'
+import { Box, Divider, Flex, Icon, Image } from "@chakra-ui/react";
+import cartImg from "../../assets/images/emptyCart.png";
+import { useOrdersStore } from "../../store/orders";
+import logo192 from '../../assets/images/epson.png'
 import { FaAngleRight } from "react-icons/fa";
-import {HiPencil, HiOutlineChevronRight} from "react-icons/hi"
-import CartDetails from "./orders/CartDetails";
-import inrFormat from "../services/inrFormat";
+import {HiPencil} from "react-icons/hi"
+import CartDetails from "./CartDetails";
+import inrFormat from "../../services/inrFormat";
 import { toast } from "react-toastify";
 
 const CartCard = ({onOpen}) => {
@@ -20,7 +20,6 @@ const CartCard = ({onOpen}) => {
             <th className="table-data">Products</th>
             <th className="table-data">Quantity</th>
             <th className="table-data table-flex">Price <Flex className="table-edit" justifyContent={"center"} alignItems={"center"} onClick={()=>toast.info("Coming soon...!")}><Icon as={HiPencil}/> Edit</Flex></th>
-            {/* <th className="table-edit">/th> */}
           </tr>
           {orders?.length>0 && (orders.slice(0, 4)?.map((item, index)=>{
               return(
@@ -73,10 +72,8 @@ const CartCard = ({onOpen}) => {
         </Flex>
         </Box>
         )}
-    {orders?.length > 0 && <CartDetails/>}
-
-      
-    </Box>
+      {orders?.length > 0 && <CartDetails/>}
+      </Box>
     </Box>
   );
 };
