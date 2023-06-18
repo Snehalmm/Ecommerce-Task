@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Heading, Grid, Box } from "@chakra-ui/react";
 import ProductCard from "./Card";
 import Description from './Modal';
+import Skeletons from "../global/Skeleton";
 
 function Categories({data, isLoadingProducts}) {
     const [isOpen, setIsOpen]= useState(false);
@@ -21,9 +22,7 @@ function Categories({data, isLoadingProducts}) {
                 {"All Products"}
             </Heading>
             {isLoadingProducts && (
-              <Heading as="h2" mb="8" fontSize="2xl">
-                  loading...
-              </Heading>
+              <Skeletons/>
             )}
             {data && data?.length===0 && (
              <Heading as="h2" mb="8" fontSize="2xl">

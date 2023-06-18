@@ -19,7 +19,7 @@ const CartCard = ({onOpen}) => {
           <tr className="table-head">
             <th className="table-data">Products</th>
             <th className="table-data">Quantity</th>
-            <th className="table-data table-flex">Price <Flex className="table-edit" justifyContent={"center"} alignItems={"center"} onClick={()=>toast.info("Coming soon...!")}><Icon as={HiPencil}/> Edit</Flex></th>
+            <th className="table-data table-flex">Price {orders?.length>0 && <Flex className="table-edit" justifyContent={"center"} alignItems={"center"} onClick={()=>toast.info("Coming soon...!")}><Icon as={HiPencil}/> Edit</Flex>}</th>
           </tr>
           {orders?.length>0 && (orders.slice(0, 4)?.map((item, index)=>{
               return(

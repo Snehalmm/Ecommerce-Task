@@ -48,8 +48,34 @@ export const useOrdersStore = create((set, get) => ({
         }));
     },
     deleteOrders: (payload) => {
+        let exOrders= [...payload]
+        let obj={}
+        // Variable to store the sum
+        let totalPrice = 0;
+
+        // Iterate over the array and sum up the prices
+        for (let i = 0; i < exOrders.length; i++) {
+        totalPrice += exOrders[i]?.totalPrice? Number(exOrders[i]?.totalPrice): Number(exOrders[i]?.price);
+        }
+        
+        let sgst = totalPrice * 0.09;
+        let cgst = totalPrice * 0.09;
+        let igst = totalPrice * 0.09;
+        let taxAmount = 1000;
+
+        let grantTotal = totalPrice + sgst + cgst + igst + taxAmount;
+        obj["itemsPrice"] =totalPrice
+        obj["sgst"] = sgst;
+        obj["cgst"] = cgst;
+        obj["igst"] = igst;
+        obj["taxAmount"] = taxAmount;
+        obj["grantTotal"] = grantTotal;
+
+
         set((state) => ({
             orders: [...payload],
+            cartDetails: obj
+
         }));
     },
     clearCart: (payload) => {
