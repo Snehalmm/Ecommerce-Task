@@ -1,4 +1,4 @@
-import { Heading, Flex, Box } from "@chakra-ui/react";
+import { Flex, Box } from "@chakra-ui/react";
 import { FetchData } from "../api/useApi";
 import { getAPiEndpoint } from "../api/apiEndpoints";
 import CartCard from "../components/orders/CartCard";
@@ -9,6 +9,7 @@ import Products from '../components/products/Products';
 import SiderBar from "../components/global/SiderBar";
 import { ToastContainer } from 'react-toastify';
 import OrderModal from '../components/orders/Modal';
+import Skeletons from "../components/global/Skeleton";
 
 const HomeScreen = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -86,9 +87,7 @@ const HomeScreen = () => {
           <Box padding="20px" width={"74%"} rounded={"lg"} bgColor={"#fff"} marginLeft={"10px"} 
             style={{height: subCatgoryID===null ? "": "500px", overflow: "auto"}}>
             {isLoadingCatgories && (
-              <Heading as="h2" mb="8" fontSize="2xl">
-                  loading...
-              </Heading>
+                <Skeletons/>
             )}
           
             {subCatgoryID===null ? (

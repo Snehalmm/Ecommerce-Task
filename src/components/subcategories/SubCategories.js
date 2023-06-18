@@ -1,14 +1,13 @@
 import { Grid, Heading } from '@chakra-ui/react';
 import SubcategoryCard from './Card';
+import Skeletons from '../global/Skeleton';
 
 const SubCategories = ({data, loading, setSubCategoryID}) => {
 
     return (
       <>
           {loading && (
-            <Heading as="h2" mb="8" fontSize="2xl">
-                loading...
-            </Heading>
+           <Skeletons/>
           )}
           {data && data?.length>0 && (
             <Grid
