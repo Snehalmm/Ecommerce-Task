@@ -9,8 +9,8 @@ import CartDetails from "./CartDetails";
 import inrFormat from "../../services/inrFormat";
 import { toast } from "react-toastify";
 
-const CartCard = ({onOpen}) => {
-  const orders = useOrdersStore((state) => state.orders);
+const CartCard = ({onOpen, setIsEditOrder, setProduct}) => {
+  const cartItems = useOrdersStore((state) => state.cartItems);
   
   return (
     <Box>
@@ -19,9 +19,9 @@ const CartCard = ({onOpen}) => {
           <tr className="table-head">
             <th className="table-data">Products</th>
             <th className="table-data">Quantity</th>
-            <th className="table-data table-flex">Price {orders?.length>0 && <Flex className="table-edit" justifyContent={"center"} alignItems={"center"} onClick={()=>toast.info("Coming soon...!")}><Icon as={HiPencil}/> Edit</Flex>}</th>
+            <th className="table-data table-flex">Price {cartItems?.length>0 && <Flex className="table-edit" justifyContent={"center"} alignItems={"center"} onClick={()=>setIsEditOrder(true)}><Icon as={HiPencil}/> Edit</Flex>}</th>
           </tr>
-          {orders?.length>0 && (orders.slice(0, 4)?.map((item, index)=>{
+          {cartItems?.length>0 && (cartItems.slice(0, 4)?.map((item, index)=>{
               return(
                 <>
                  <tr>
@@ -49,7 +49,7 @@ const CartCard = ({onOpen}) => {
           )}
          
         </table>
-        {orders?.length>4 && (
+        {cartItems?.length>4 && (
           <>
               <Divider orientation='horizontal' />
                 <Box className="cm-center" mt={1} onClick={onOpen}>
@@ -64,7 +64,7 @@ const CartCard = ({onOpen}) => {
           </>
         )}
      
-      {orders?.length===0 && (
+      {cartItems?.length===0 && (
         <Box >
         <Flex justifyContent={"center"} alignItems={"center"} direction={"column"} marginY="150" marginX="auto">
           <Image src={cartImg} width={20} />
@@ -72,7 +72,7 @@ const CartCard = ({onOpen}) => {
         </Flex>
         </Box>
         )}
-      {orders?.length > 0 && <CartDetails/>}
+      {cartItems?.length > 0 && <CartDetails/>}
       </Box>
     </Box>
   );

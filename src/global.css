@@ -23,6 +23,12 @@
   display: block;
 }
 
+.error-text{
+  font-size: 11px ;
+  color: #e32227 !important;
+
+}
+
 .table-container {
   border-collapse: collapse;
   width: 100%;
@@ -115,6 +121,10 @@
   display: flex;
   justify-content: space-between;
 }
+/* .category-card:hover{
+  border:1px solid #e32227
+  
+} */
 
 /* .mod-prod-subtitle {
   font-size: 10px;

@@ -16,7 +16,8 @@ const HomeScreen = () => {
   const [subCategory, setSubCategory] = useState([]);
   const [subCatgoryID, setSubCategoryID] = useState(null);
   const [isOpenOrder, setIsOpenOrder] = useState(false);
-
+  const [isEditOrder, setIsEditOrder] = useState(false);
+  const [productID, setProductID] = useState(null);
   const [name, setName] = useState(null);
 
   const categoriesAction = {
@@ -95,16 +96,16 @@ const HomeScreen = () => {
                 <Categories name={name} selectedCategory={selectedCategory} categoriesData={categoriesData} setName={setName} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} setSubCategoryID={setSubCategoryID} setSubCategory={setSubCategory}/>
               )
             ):(
-             <Products data={productsData} isLoadingProducts={isLoadingProducts}/>
+             <Products data={productsData} isLoadingProducts={isLoadingProducts} isEditOrder={isEditOrder} productID={productID} setIsEditOrder={setIsEditOrder} setProductID={setProductID}/>
             )}
           </Box>
         </Flex>
         {subCatgoryID?.length>0  && <Footer data={subCategory} setSubCategoryID={setSubCategoryID} />}
        </Box>
         <Box bgColor={"#fff"} rounded={"lg"} width={"24%"} marginLeft={"10px"}>
-          <CartCard onOpen={onOpenOrders}/>
+          <CartCard onOpen={onOpenOrders} setIsEditOrder={setIsEditOrder}/>
         </Box>
-        <OrderModal isOpen={isOpenOrder} onClose={onCloseOrders}/>
+        <OrderModal isOpen={isOpenOrder} onClose={onCloseOrders} />
         <ToastContainer
           position="bottom-center"
           autoClose={3000}

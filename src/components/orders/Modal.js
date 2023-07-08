@@ -15,7 +15,7 @@ import cartImg from "../../assets/images/emptyCart.png";
 
 
 function Orders({isOpen, onClose}) {
-  const orders = useOrdersStore((state) => state.orders);
+  const cartItems = useOrdersStore((state) => state.cartItems);
     return (
       <Box>
         <Modal size={"md"} isOpen={isOpen} onClose={onClose} scrollBehavior={'inside'}>
@@ -31,7 +31,7 @@ function Orders({isOpen, onClose}) {
                         <th className="table-data">Quantity</th>
                         <th className="table-data">Price</th>
                     </tr>
-                    {orders?.length>0 && (orders?.map((item, index)=>{
+                    {cartItems?.length>0 && (cartItems?.map((item, index)=>{
                         return(
                             <tr>
                             <td className="table-data" key={index}>
@@ -55,7 +55,7 @@ function Orders({isOpen, onClose}) {
                         })
                     )}
                     </table>
-                    {orders?.length===0 && (
+                    {cartItems?.length===0 && (
                     <Box >
                     <Flex justifyContent={"center"} alignItems={"center"} direction={"column"} marginY="150" marginX="auto">
                         <Image src={cartImg} width={20} />

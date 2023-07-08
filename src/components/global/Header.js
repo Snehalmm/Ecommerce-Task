@@ -13,6 +13,8 @@ import {
   MenuItem,
   MenuList,
   Text,
+  Image,
+  border,
 } from '@chakra-ui/react';
 import {
   FiBell,
@@ -20,6 +22,7 @@ import {
 } from 'react-icons/fi';
 import SearchBar from './SearchBar'
 import { toast } from 'react-toastify';
+import logo from "../../assets/images/ATLogo.png"
 
 const Header = ({ onOpen, ...rest }) => {
     return (
@@ -35,27 +38,33 @@ const Header = ({ onOpen, ...rest }) => {
   
        <Box width={"50%"}>
         <Flex alignItems={"center"}>
+       <Box>
+        <Flex alignItems={"center"}>
+        <Image src={logo} height={39} width={39}/>
         <Text
           display={{ base: 'flex', md: 'flex-start' }}
-          fontSize="2xl"
+          fontSize="1xl"
           fontFamily="monospace"
           fontWeight="bold"
           marginRight={"100px"}
         >
-          A.T.links
+          A.T.lnks
         </Text>
-        <SearchBar/>
+        </Flex>
+       </Box>
+       <SearchBar width="60%" size={"md"}/>
         </Flex>
        </Box>
   
         <HStack spacing={{ base: '0', md: '6' }}>
-          <IconButton
+        <Image src={logo} height={39} width={39} border="1px solid gray" borderRadius="50%"/>
+          {/* <IconButton
             size="lg"
             variant="ghost"
             aria-label="open menu"
             icon={<FiBell />}
             onClick={()=>toast.info("Coming soon...!")}
-          />
+          /> */}
           <Flex alignItems={'center'} >
             <Menu>
               <MenuButton
