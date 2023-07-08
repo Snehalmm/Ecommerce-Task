@@ -14,15 +14,18 @@ import {
     Heading,
     SimpleGrid,
     Box,
+    Input,
+    FormLabel,
   } from '@chakra-ui/react';
 import {IoMdClose}  from "react-icons/io"
 import { useEffect, useState } from 'react';
 import logo192 from '../../assets/images/epson.png'
 import { useOrdersStore } from '../../store/orders';
 import cartImg from "../../assets/images/emptyCart.png";
+import { AddIcon, MinusIcon } from '@chakra-ui/icons';
 
 
-function Description({isOpen, onClose, product}) {
+function Description({isOpen, onClose, product, addToCart, setProductID}) {
     
   let uniqueColorVariants = []; 
   product?.variants.map((item) => {
@@ -62,6 +65,7 @@ function Description({isOpen, onClose, product}) {
 
   const addOrders = (item) => {
     let orderObj={}
+    orderObj['productId']=product?.productId
     orderObj['image']=product?.productImages
     orderObj['name']=product?.itemDescription
     orderObj['salesDescription']= item?.saleDescription
@@ -70,7 +74,6 @@ function Description({isOpen, onClose, product}) {
     orderObj['id']= item?._id
     orderObj['qty']= 1
     setOrders(orderObj)
-
   }
     const onDeleteOreders = (id) =>{
       let exOrders=[...orders]
@@ -147,6 +150,18 @@ function Description({isOpen, onClose, product}) {
                     </Button>
                   ))}
                 </SimpleGrid>
+
+                <Box my={4}>
+                  <FormLabel htmlFor='qty' color="#1a202c" fontWeight={700}>Enter Quantity</FormLabel>
+                  <Input type="text" name='qty' value={100} disabled placeholder='Enter Quantity'/>
+                  <span className='cm-line-break error-text'>Minimum orders 12*</span>
+                </Box>
+                <Box my={4}>
+                  <Flex alignItems={'center'}>
+                  <input type="checkbox" id='check' name='check'/>
+                  <FormLabel htmlFor='check' marginLeft={1} fontSize={'sm'} mb={0}> Need Urgent Order</FormLabel>
+                  </Flex>  
+                </Box>
                 <Flex alignItems={"center"}  justifyContent={"center"}>
                 <Button variant="outline" colorScheme="red" margin={"45px 0"}  padding={"10px 85px"} onClick={() => addOrders(colorState? activeColor:packeging? activePackeging : null)}>Add</Button>
                 </Flex>
@@ -164,7 +179,7 @@ function Description({isOpen, onClose, product}) {
                       {orders?.length>0 && (orders?.map((item, index)=>{
                           return(
                             <tr>
-                            <td className="table-data" key={index}>
+                            <td className="table-data" key={index} onClick={()=> setProductID(item?.productId)} >
                               <div className="tb-prod-name" width={20}>
                                 <span>
                                   {" "}
@@ -178,6 +193,8 @@ function Description({isOpen, onClose, product}) {
                                 </p>
                               </div>
                             </td>
+                            {/* <td className="table-data tb-prod-qty">{item?.qty}</td> */}
+                            {/* <td className="table-data tb-prod-qty"><MinusIcon w={3} h={3} marginRight={3}/>{item?.qty}<AddIcon w={3} h={3} marginLeft={3}/></td> */}
                             <td className="table-data tb-prod-qty">{item?.qty}</td>
                             <td className="table-data tb-prod-amt">{item?.currency?.symbol} {item?.totalPrice? item?.totalPrice: item?.price}</td>
                             <td className="table-data tb-prod-amt" onClick={()=> onDeleteOreders(item.id)}><Icon as={IoMdClose} color="red.600" cursor={"pointer"}/></td>
@@ -200,7 +217,7 @@ function Description({isOpen, onClose, product}) {
                   </Box>
                     {orders?.length>0 &&
                     <Flex alignItems={"center"}  justifyContent={"center"} mt={10}>
-                      <Button bg={"red.500"} color={"#FFF"} padding={"10px 85px"} onClick={onClose}>Add to Cart</Button>
+                      <Button bg={"red.500"} color={"#FFF"} padding={"10px 85px"} onClick={addToCart}>Add to Cart</Button>
                     </Flex>}
                    </Box>
                  </Flex>

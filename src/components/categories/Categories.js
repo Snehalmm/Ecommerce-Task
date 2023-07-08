@@ -2,8 +2,10 @@ import { useEffect } from "react";
 import { getAPiEndpoint } from "../../api/apiEndpoints";
 import { FetchData } from "../../api/useApi";
 import SubCategory from "../subcategories/SubCategories";
-import { Heading, Grid, Box } from "@chakra-ui/react";
+import { Heading, Grid, Box, Flex, Select } from "@chakra-ui/react";
 import CategoryCard from "./Card";
+import SearchBar from "../global/SearchBar";
+import { TriangleDownIcon } from "@chakra-ui/icons";
 
 function Categories({name, selectedCategory, categoriesData, setName, setSelectedCategory, setSubCategoryID, setSubCategory}) {
     const subCategoriesAction = {
@@ -36,9 +38,20 @@ function Categories({name, selectedCategory, categoriesData, setName, setSelecte
       <>
       
        <Box>
-            <Heading as="h2" mb="8" fontSize="2xl">
+        <Box>
+          <Flex justifyContent={"space-between"} alignItems="center"  mb="5">
+            <Heading as="h2" fontSize="2xl">
                 {name}
             </Heading>
+<Box>
+<Flex alignItems="center" justifyContent="end">
+<SearchBar width="55%" size={"sm"}/>
+<Select placeholder='filter' size='sm' width="28"  marginLeft={2} icon={<TriangleDownIcon />} iconSize={10}/>
+</Flex>
+</Box>
+          </Flex>
+
+        </Box>
                 <Box
                   borderBottom="1px solid"
                   borderColor={"blackAlpha.500"}

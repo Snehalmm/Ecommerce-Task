@@ -1,12 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Heading, Grid, Box } from "@chakra-ui/react";
 import ProductCard from "./Card";
 import Description from './Modal';
 import Skeletons from "../global/Skeleton";
+import { useOrdersStore } from "../../store/orders";
 
-function Categories({data, isLoadingProducts}) {
+function Categories({data, isLoadingProducts, isEditOrder, productID, setIsEditOrder, setProductID }) {
     const [isOpen, setIsOpen]= useState(false);
     const [product, setProduct] = useState(null);
+    const orders = useOrdersStore((state) => state.orders);
+    const cartItems = useOrdersStore((state) => state.cartItems);
+    const setAddToCart = useOrdersStore((state) => state.setAddToCart);
+    const setProducts = useOrdersStore((state) => state.setProducts);
+    const products = useOrdersStore((state) => state.products);
 
     const onOpen =(item)=>{
       setIsOpen(true);
@@ -14,7 +20,34 @@ function Categories({data, isLoadingProducts}) {
     }
     const onClose =()=>{
       setIsOpen(false);
+      setIsEditOrder(false)
     }
+    const addToCart =()=>{
+      onClose()
+      setAddToCart(orders)
+    }
+    useEffect(()=>{
+      if(isEditOrder){
+        setIsOpen(isEditOrder)
+        let getItem= products.find((item)=> item.productId === cartItems[0]?.productId)
+        setProduct(getItem)
+      }
+     
+    }, [isEditOrder]);
+
+    useEffect(()=>{
+      if(productID){
+        let getItem= products.find((item)=> item.productId === productID)
+        setProduct(getItem)
+      }
+    }, [productID]);
+
+    useEffect(()=> {
+      if(data){
+        setProducts(data)
+      }
+    }, [data]);
+    
     return (
       <>
        <Box>
@@ -47,7 +80,7 @@ function Categories({data, isLoadingProducts}) {
             </Box>
           )}
         </Box>
-        <Description onClose={onClose} isOpen={isOpen} product={product}/>
+        <Description onClose={onClose} isOpen={isOpen} product={product} addToCart={addToCart} setProductID={setProductID} />
       </>
     )
   }

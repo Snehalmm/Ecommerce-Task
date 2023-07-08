@@ -5,9 +5,12 @@ import {
   Text,
   Link,
   Flex,
+  Image,
 } from '@chakra-ui/react';
 import { FaThLarge, FaHeart, FaCubes, FaCertificate, FaBox } from "react-icons/fa";
 import { toast } from 'react-toastify';
+import logo from "../../assets/images/ATLogo.png"
+
 
 const LinkItems = [
   { name: 'Dashboard', icon: FaThLarge, id:1 },
@@ -63,8 +66,9 @@ const SiderBarContent = ({history}) => {
 
     return (
       <Box>
-        <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
-          <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
+        <Flex h="20" alignItems="center" mx="8">
+        <Image src={logo} height={39} width={39}/>
+          <Text fontSize="1xl" fontFamily="monospace" fontWeight="bold">
             A.T.links
           </Text>
         </Flex>

@@ -2,7 +2,9 @@ import { create } from 'zustand';
 
 export const useOrdersStore = create((set, get) => ({
     orders: [],
+    cartItems: [],
     cartDetails:{},
+    products:[],
 
     setOrders: (payload) => {
         const currentState = get();
@@ -20,6 +22,13 @@ export const useOrdersStore = create((set, get) => ({
         }else{
             exOrders=[...currentState.orders, payload]
         }
+
+        set((state) => ({
+            orders: exOrders,
+        }));
+    },
+    setAddToCart: (payload) => {
+       let exOrders= payload
         let obj={}
         // Variable to store the sum
         let totalPrice = 0;
@@ -32,7 +41,7 @@ export const useOrdersStore = create((set, get) => ({
         let sgst = totalPrice * 0.09;
         let cgst = totalPrice * 0.09;
         let igst = totalPrice * 0.09;
-        let taxAmount = 1000;
+        let taxAmount = sgst+ cgst+ igst;
 
         let grantTotal = totalPrice + sgst + cgst + igst + taxAmount;
         obj["itemsPrice"] =totalPrice
@@ -43,7 +52,7 @@ export const useOrdersStore = create((set, get) => ({
         obj["grantTotal"] = grantTotal;
 
         set((state) => ({
-            orders: exOrders,
+            cartItems: exOrders,
             cartDetails: obj
         }));
     },
@@ -81,8 +90,27 @@ export const useOrdersStore = create((set, get) => ({
     clearCart: (payload) => {
         set((state) => ({
             orders: [],
+            cartItems: [],
             cartDetails: {},
         }));
+    },
+    setProducts: (payload)=>{
+        const currentState = get();
+        let uniqueArray=[]
+        if(payload !==undefined){
+            let exProducts=[...currentState?.products]
+            exProducts=exProducts.concat(payload)
+
+            uniqueArray = exProducts.filter((obj, index, self) => {
+                return index === self.findIndex((o) =>
+                o.productId === obj.productId
+                );
+            });
+        }
+        set((state) => ({
+            products: uniqueArray,
+        }));
     }
+
 
 }));

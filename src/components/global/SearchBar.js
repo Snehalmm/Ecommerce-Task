@@ -10,16 +10,16 @@ import {
 import { Search2Icon } from "@chakra-ui/icons";
 import { toast } from "react-toastify";
 
-const SearchBar = () => {
+const SearchBar = ({width, size}) => {
   return (
-    <Box size={"lg"}>
-      <InputGroup borderRadius={5} size="sm">
+    <Box width={width}>
+      <InputGroup borderRadius={5} size={size}>
         <InputLeftElement
           pointerEvents="none"
           children={<Search2Icon color="gray.600" />}
         />
-        <Input type="text" placeholder="Search..." border="1px solid #949494" />
-        <InputRightAddon
+        <Input type="text" placeholder="Search..." border="1px solid #949494"  onClick={()=>toast.info("Coming soon...!")} borderRadius="5px"/>
+        {/* <InputRightAddon
           p={0}
           border="none"
         >
@@ -28,7 +28,7 @@ const SearchBar = () => {
             >
             Search
           </Button>
-        </InputRightAddon>
+        </InputRightAddon> */}
       </InputGroup>
     </Box>
   );
