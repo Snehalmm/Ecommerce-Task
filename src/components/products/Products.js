@@ -47,38 +47,40 @@ function Categories({data, isLoadingProducts, isEditOrder, productID, setIsEditO
         setProducts(data)
       }
     }, [data]);
-    
+
     return (
       <>
        <Box>
             <Heading as="h2" mb="8" fontSize="2xl">
                 {"All Products"}
             </Heading>
-            {isLoadingProducts && (
-              <Skeletons/>
-            )}
+            {isLoadingProducts ? (
+              <Skeletons/>):(
+                data?.length>0 && (
+                  <Box paddingY={"20px"} paddingX="10px">
+                  <Grid
+                      templateColumns={{
+                          sm: '1fr',
+                          md: '1fr 1fr',
+                          lg: '1fr 1fr 1fr',
+                          xl: '1fr 1fr 1fr',
+                      }}
+                      gap='4'
+                  >
+                      {data.map((item, index) => (
+                          <ProductCard key={index} item={item} onOpen={onOpen}/>
+                      ))}
+                  </Grid>
+                  </Box>
+                )
+              )
+            }
             {data && data?.length===0 && (
              <Heading as="h2" mb="8" fontSize="2xl">
                 No Products Found
             </Heading>
           )}
-          {data?.length>0 && (
-            <Box paddingY={"20px"} paddingX="10px">
-            <Grid
-                templateColumns={{
-                    sm: '1fr',
-                    md: '1fr 1fr',
-                    lg: '1fr 1fr 1fr',
-                    xl: '1fr 1fr 1fr',
-                }}
-                gap='4'
-            >
-                {data.map((item, index) => (
-                    <ProductCard key={index} item={item} onOpen={onOpen}/>
-                ))}
-            </Grid>
-            </Box>
-          )}
+        
         </Box>
         <Description onClose={onClose} isOpen={isOpen} product={product} addToCart={addToCart} setProductID={setProductID} />
       </>

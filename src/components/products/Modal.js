@@ -89,10 +89,17 @@ function Description({isOpen, onClose, product, addToCart, setProductID}) {
             <ModalHeader>No Data Found</ModalHeader>
           )}
           {product !==null && (
-            <ModalHeader>{product?.itemDescription}</ModalHeader>
+            <Flex justifyContent={"space-between"} alignItems={"center"}>
+              <Box width={"56%"}>
+                <ModalHeader>{product?.itemDescription}</ModalHeader>
+              </Box>
+              <Box width={"43%"}>
+                <ModalHeader px={0}>{"Order List"}</ModalHeader>
+                <ModalCloseButton />
+              </Box>
+            </Flex>
           )}
-            <ModalCloseButton />
-            {product !==null && (
+          {product !==null && (
             <>
                 <ModalBody >
                  <Flex justifyContent={"space-between"}>
@@ -224,7 +231,7 @@ function Description({isOpen, onClose, product, addToCart, setProductID}) {
                 </ModalBody>
       
             </>
-            )}
+          )}
           
           </ModalContent>
         </Modal>
