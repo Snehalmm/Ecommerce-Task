@@ -3,7 +3,7 @@ import logo192 from '../../assets/images/epson.png';
 import homeIcon from '../../assets/images/home-icon.jpg';
 
 
-const Footer = ({data, setSubCategoryID}) => {
+const Footer = ({data, setSubCategoryID, subCatgoryID}) => {
   return (
     <Box width="100%" rounded={"lg"} bgColor="#fff"  mt={3} padding={3} >
         <Flex  alignItems={"center"}>
@@ -26,6 +26,7 @@ const Footer = ({data, setSubCategoryID}) => {
                 />
             </Box>
             {data.map((item, index)=>{
+                console.log("subCatgoryID", subCatgoryID, item.subCategoryId)
                 return(
                         <Box
                             pos={'relative'}
@@ -37,6 +38,13 @@ const Footer = ({data, setSubCategoryID}) => {
                             onClick={()=> 
                             setSubCategoryID(item.subCategoryId)
                             }
+                            // _hover={{
+                            //     borderWidth:4,
+                            //     borderColor:"red.400",
+                            //     rounded:'lg'
+                            //   }}
+                    className={subCatgoryID===item?.subCategoryId? "active-card": ''}
+
                         >
                             <Image
                                 objectFit={'fill'}

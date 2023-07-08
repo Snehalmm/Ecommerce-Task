@@ -75,7 +75,6 @@ const HomeScreen = () => {
   const onOpenOrders = () => {
     setIsOpenOrder(true);
   }
-
   return (
     <>
       <Box bgColor={"gray.300"} padding="10px">
@@ -100,7 +99,7 @@ const HomeScreen = () => {
             )}
           </Box>
         </Flex>
-        {subCatgoryID?.length>0  && <Footer data={subCategory} setSubCategoryID={setSubCategoryID} />}
+        {subCatgoryID?.length>0  && <Footer data={subCategory} setSubCategoryID={setSubCategoryID} subCatgoryID={subCatgoryID} />}
        </Box>
         <Box bgColor={"#fff"} rounded={"lg"} width={"24%"} marginLeft={"10px"}>
           <CartCard onOpen={onOpenOrders} setIsEditOrder={setIsEditOrder}/>
