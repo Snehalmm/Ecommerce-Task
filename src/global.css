@@ -133,3 +133,13 @@
 .mod-prod-title {
   font-size: 14px;
 } */
+
+.active-card{
+  border-color:#e32227 !important;
+  border-width:3px !important;
+  border-radius: 6px;
+  max-height: 144px !important;
+  max-width: 144px !important;
+  object-fit: fill;
+  overflow:hidden ;
+}

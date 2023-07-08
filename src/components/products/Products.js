@@ -56,6 +56,11 @@ function Categories({data, isLoadingProducts, isEditOrder, productID, setIsEditO
             </Heading>
             {isLoadingProducts ? (
               <Skeletons/>):(
+                data && data?.length===0 ? (
+                  <Heading as="h2" mb="8" fontSize="2xl">
+                     No Products Found
+                 </Heading>
+               ):
                 data?.length>0 && (
                   <Box paddingY={"20px"} paddingX="10px">
                   <Grid
@@ -75,11 +80,6 @@ function Categories({data, isLoadingProducts, isEditOrder, productID, setIsEditO
                 )
               )
             }
-            {data && data?.length===0 && (
-             <Heading as="h2" mb="8" fontSize="2xl">
-                No Products Found
-            </Heading>
-          )}
         
         </Box>
         <Description onClose={onClose} isOpen={isOpen} product={product} addToCart={addToCart} setProductID={setProductID} />

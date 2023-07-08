@@ -43,12 +43,12 @@ function Categories({name, selectedCategory, categoriesData, setName, setSelecte
             <Heading as="h2" fontSize="2xl">
                 {name}
             </Heading>
-<Box>
-<Flex alignItems="center" justifyContent="end">
-<SearchBar width="55%" size={"sm"}/>
-<Select placeholder='filter' size='sm' width="28"  marginLeft={2} icon={<TriangleDownIcon />} iconSize={10}/>
-</Flex>
-</Box>
+              <Box>
+              <Flex alignItems="center" justifyContent="end">
+              <SearchBar width="55%" size={"sm"}/>
+              <Select placeholder='filter' size='sm' width="28"  marginLeft={2} icon={<TriangleDownIcon />} iconSize={10}/>
+              </Flex>
+              </Box>
           </Flex>
 
         </Box>
@@ -73,6 +73,7 @@ function Categories({name, selectedCategory, categoriesData, setName, setSelecte
                         item={item}
                         setSelectedCategory={setSelectedCategory}
                         setName={setName}
+                        selectedCategory={selectedCategory}
                       />
                     ))}
                   </Grid>

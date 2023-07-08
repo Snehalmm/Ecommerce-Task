@@ -1,7 +1,7 @@
 import { Box, Heading, Image, border } from "@chakra-ui/react";
 import logo192 from '../../assets/images/epson.png';
 
-const CategoryCard = ({item, setSelectedCategory, setName}) => {
+const CategoryCard = ({item, setSelectedCategory, setName, selectedCategory}) => {
 
     return (
         <Box
@@ -11,17 +11,16 @@ const CategoryCard = ({item, setSelectedCategory, setName}) => {
           cursor={"pointer"}
           maxH= {"144px"}
           overflow= {'hidden'}
-          
           onClick={()=> {
             setSelectedCategory(item.categoryId);
             setName(item.categoryName);
           }}
           zIndex={1}
+          className={selectedCategory===item?.categoryId? "active-card": ''}
           _hover={{
-            borderWidth:4,
-            borderColor:"red.400",
+            // borderWidth:4,
+            // borderColor:"red.400",
            rounded:'lg'
-
           }}
           
         >
